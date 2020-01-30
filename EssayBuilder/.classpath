@@ -11,5 +11,7 @@
 	<classpathentry kind="lib" path="E:/EssayBuilder/json-lib-2.4-jdk13.jar"/>
 	<classpathentry kind="lib" path="E:/EssayBuilder/morph-1.1.1/morph-1.1.1.jar"/>
 	<classpathentry kind="lib" path="E:/EssayBuilder/apache-tomcat-9.0.30/lib/servlet-api.jar" sourcepath="C:/Users/ADMINI~1/AppData/Local/Temp/.org.sf.feeling.decompiler1580360877110/source/tomcat-servlet-api-9.0.30-sources.jar"/>
+	<classpathentry kind="lib" path="E:/EssayBuilder/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="E:/EssayBuilder/commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
