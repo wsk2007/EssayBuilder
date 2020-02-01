@@ -2,7 +2,7 @@ package org.wsk.EssayBuilder;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
-
+@author(value = "wsk")
 public class Builder {
 	SecureRandom sr = new SecureRandom();
 	ArrayList<String> famous;
@@ -17,7 +17,7 @@ public class Builder {
 		
 	}
 	
-	public String Build(String theme, int length) {
+	public String buildRandom(String theme, int length) {
 		StringBuilder sb = new StringBuilder();
 		int num;
 		sb.append("    ");
@@ -26,7 +26,8 @@ public class Builder {
 			if(num < 5) {
 				sb.append("\r\n");
 				sb.append("    ");
-			}if(num < 30) {
+			}
+			if(num < 30) {
 				sb.append(randomChoice(famous).replace("a", randomChoice(before)).replace("b", randomChoice(after)));
 						
 				num = sr.nextInt(100);
@@ -36,7 +37,8 @@ public class Builder {
 				}
 			
 				
-			}if(num < 100) {
+			}
+			if(num < 100) {
 				sb.append(randomChoice(bosh).replaceAll("x", theme));
 				
 			}

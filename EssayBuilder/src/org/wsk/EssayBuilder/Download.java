@@ -1,21 +1,20 @@
 package org.wsk.EssayBuilder;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
+
+
+
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+
+
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Vector;
 
-import javax.servlet.http.HttpServletResponse;
 
-
+@author(value = "wsk")
 public class Download {
 	public final static boolean DEBUG = true; // 调试用
 	private static int BUFFER_SIZE = 10240; // 缓冲区大小(缓冲区越大下载的越快,但是要根据自己的服务器配置)
@@ -100,12 +99,16 @@ public class Download {
 		// 建立文件
 		fos = new FileOutputStream(fileName);
  
-		if (this.DEBUG)
+		if (this.DEBUG) {
 			System.out.println("正在获取链接[" + destUrl + "]的内容...\n将其保存为文件["
 					+ fileName + "]");
+		}
+			
 		// 保存文件
-		while ((size = bis.read(buf)) != -1)
+		while ((size = bis.read(buf)) != -1) {
 			fos.write(buf, 0, size);
+		}
+			
  
 		fos.close();
 		bis.close();
@@ -132,7 +135,7 @@ public class Download {
 		url = new URL(destUrl);
 		httpUrl = (HttpURLConnection) url.openConnection();
  
-		// String authString = "username" + ":" + "password";
+
 		String authString = "50301" + ":" + "88888888";
 		String auth = "Basic "
 				+ new sun.misc.BASE64Encoder().encode(authString.getBytes());
@@ -145,12 +148,16 @@ public class Download {
 		// 建立文件
 		fos = new FileOutputStream(fileName);
  
-		if (this.DEBUG)
+		if (this.DEBUG) {
 			System.out.println("正在获取链接[" + destUrl + "]的内容...\n将其保存为文件["
 					+ fileName + "]");
+		}
+			
 		// 保存文件
-		while ((size = bis.read(buf)) != -1)
+		while ((size = bis.read(buf)) != -1) {
 			fos.write(buf, 0, size);
+		}
+			
  
 		fos.close();
 		bis.close();
@@ -172,21 +179,7 @@ public class Download {
 		System.getProperties().put("proxyPort", proxyPort);
 	}
     
-	/*
-	 * modify 因为没有找到上传者的MyAuthenticator类,所以把这段代码给注释掉了,对文件下载功能没有影响
-	 * 
-	public void setAuthenticator(String uid, String pwd) {
-		Authenticator.setDefault(new MyAuthenticator());
-	}
-	*/
- 
-	/**
-	 * 主方法(用于测试)
-	 * 
-	 * @param argv
-	 *            String[]
-	 */
-	
+
 
 
 

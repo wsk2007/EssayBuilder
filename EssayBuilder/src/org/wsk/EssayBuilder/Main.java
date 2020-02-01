@@ -1,8 +1,11 @@
 package org.wsk.EssayBuilder;
 
 import java.util.ArrayList;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+@author(value = "wsk")
 public class Main {
+	private static Logger log = Logger.getLogger("org.wsk.EssayBuilder.Main");
 
 	public static void main(String[] args) {
 		Download d = new Download();
@@ -13,9 +16,9 @@ public class Main {
 			
 		}
 			
-			// TODO 自动生成的 catch 块
+			
 			catch(Exception e) {
-			e.printStackTrace();
+				log.log(Level.WARNING, e.getMessage());
 			
 		}
 		
@@ -24,7 +27,7 @@ public class Main {
 		String[] s = {"famous" , "bosh" , "after" , "before"};
 		ArrayList<ArrayList<String>> al = j.getdata("data.json", s);
 		Builder b = new Builder(al.get(0),al.get(1),al.get(3),al.get(2));
-		System.out.println(b.Build("好好学习", 5000));
+		System.out.println(b.buildRandom("好好学习", 5000));
 		
 		}
 

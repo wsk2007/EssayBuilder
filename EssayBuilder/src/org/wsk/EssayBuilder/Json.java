@@ -1,26 +1,32 @@
 package org.wsk.EssayBuilder;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
+
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
+
+
+import java.util.logging.*;
+
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
+@author(value = "wsk")
 public class Json {
+	private Logger log = Logger.getLogger(this.getClass().getName());
 	public ArrayList<ArrayList<String>> getdata(String path, String[] key) {
-		File f = new File(path);
-		String str = readFile(f);
-		JSONObject jo = JSONObject.fromObject(str);
+		JSONObject jo = null;
+		String str = readFile(path);
+		try {
+			jo = JSONObject.fromObject(str);
+		}catch(Exception e) {
+			log.log(Level.SEVERE, e.toString());
+			
+		}
+		
 		ArrayList<ArrayList<String>>  al = new ArrayList<ArrayList<String>>();
 		for(int k = 0; k < key.length ; k++) {
 			al.add(new ArrayList<String>());
@@ -29,10 +35,10 @@ public class Json {
 
 
 		
-		ArrayList<String> a;
+		
 		JSONArray ja;
 		int j = 0;
-		Iterator<String> it;
+		
 
 		for(ArrayList<String> a1 : al) {
 			
@@ -57,11 +63,11 @@ public class Json {
 		return al;
 
 	}	
-	public String readFile(File f) {
+	public String readFile(String path) {
 		StringBuilder sb = new StringBuilder();
 		try {
 
-                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("data.json"),"UTF-8"));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path),"UTF-8"));
 
               String s = null;
 
@@ -75,7 +81,9 @@ public class Json {
 
 		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.toString());
+			
+			
 		}
 		
 		
