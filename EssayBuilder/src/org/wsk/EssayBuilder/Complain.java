@@ -14,14 +14,17 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-@author(value = "wsk")
-@Retention(RUNTIME)
+@author(value = "wsk") //作者：wsk
+@Retention(RUNTIME) //运行时可见
 @Target({ TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, ANNOTATION_TYPE, PACKAGE, TYPE_PARAMETER,
-		TYPE_USE })
+		TYPE_USE }) //可用于任意类型
 public @interface Complain {
-	String details(); 
-	String title(); 
+	String details();
+	//抱怨内容
+	String title();
+	//抱怨的标题
 	String author(); 
+	// 抱怨者
 	Complain.grade gread(); 
 	@Complain(author = "wsk", details = "为啥要写这么多注释", gread = Complain.grade.LITTELANGRY, title = "该死的注释")
 	enum grade { //状态
